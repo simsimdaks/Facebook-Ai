@@ -38,7 +38,7 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
 
       helpMessage += `━━━━━━━━━━━━━━━\n`;
       helpMessage += `━━𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙿𝙰𝙶𝙴 : <${page}/${pages}>━━\n`;
-      helpMessage += `━━CHILLI 𝖠𝖨 𝖢𝖧𝖠𝖳𝖡𝖮𝖳━━\n`;
+      helpMessage += `:>Raniella's 𝖠𝖨 𝖢𝖧𝖠𝖳𝖡𝖮𝖳<:\n`;
       helpMessage += `Total commands: ${totalCommands}\n`;
       helpMessage += `Type "help all" to see all commands.`;
 
@@ -50,7 +50,7 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       }
 
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `:>Raniel 𝖠𝖨 𝖢𝖧���HatBot<:\n`;
+      helpMessage += `:>Raniella's 𝖠𝖨 𝖢𝖧���HatBot<:\n`;
       helpMessage += `Total commands: ${totalCommands}`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
