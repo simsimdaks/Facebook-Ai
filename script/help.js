@@ -50,7 +50,7 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       }
 
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `━━CHILLI 𝖠𝖨 𝖢𝖧𝖠𝖳𝖡𝖮𝖳━━\n`;
+      helpMessage += `:>Raniel 𝖠𝖨 𝖢𝖧���HatBot<:\n`;
       helpMessage += `Total commands: ${totalCommands}`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
