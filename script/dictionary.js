@@ -1,13 +1,11 @@
-const axios = require('axios');
-const fs = require('fs');
 module.exports.config = {
-  name: 'anime',
-  version: '1.0.0',
+  name: "dictionary",
+  version: "1.0.0",
   role: 0,
   hasPrefix: false,
-  aliases: ['hanime'],
-  description: 'Get a random anime image',
-  usage: "Anime [category-type]",
+  aliases: ['search'],
+  description: "Search words dictionary",
+  usage: "Ai [promot]",
   credits: 'Develeoper',
   cooldown: 5,
 };
@@ -16,32 +14,34 @@ module.exports.run = async function({
   event,
   args
 }) {
+  const input = args.join(" ");
+  if (!input) {
+    return api.sendMessage("Please provide a word to search for.", event.threadID, event.messageID);
+  }
   try {
-    const input = args.join(' ');
-    if (!input) {
-      const message = `Here's the list of anime categories:\n\nCategory: nsfw\nType:\n• waifu\n• neko\n• trap\n• blowjob\n\nCategory: sfw\nType:\n• waifu\n• neko\n• shinobu\n• megumin\n• bully\n• cuddle\n• cry\n• hug\n• awoo\n• kiss\n• lick\n• pat\n• smug\n• bonk\n• yeet\n• blush\n• smile\n• wave\n• highfive\n• handhold\n• nom\n• bite\n• glomp\n• slap\n• kill\n• kick\n• happy\n• wink\n• poke\n• dance\n• cringe\n\nUsage: anime category - type`;
-      api.sendMessage(message, event.threadID, event.messageID);
-    } else {
-      const split = input.split('-').map(item => item.trim());
-      const choice = split[0];
-      const category = split[1];
-      const time = new Date();
-      const timestamp = time.toISOString().replace(/[:.]/g, "-");
-      const pathPic = __dirname + '/cache/' + `${timestamp}_waifu.png`;
-      const {
-        data
-      } = await axios.get(`https://api.waifu.pics/${choice}/${category}`);
-      const picture = data.url;
-      const getPicture = (await axios.get(picture, {
-        responseType: 'arraybuffer'
-      })).data;
-      fs.writeFileSync(pathPic, Buffer.from(getPicture, 'utf-8'));
-      api.sendMessage({
-        body: '',
-        attachment: fs.createReadStream(pathPic)
-      }, event.threadID, () => fs.unlinkSync(pathPic), event.messageID);
-    }
+    const response = await require("axios").get(encodeURI(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`));
+    const data = response.data[0];
+    const example = data.meanings[0].definitions.example;
+    const phonetics = data.phonetics;
+    const meanings = data.meanings;
+    let msg_meanings = "";
+    meanings.forEach((item) => {
+      const definition = item.definitions[0].definition;
+      const example = item.definitions[0].example ? `\n*example:\n \"${item.definitions[0].example[0].toUpperCase() + item.definitions[0].example.slice(1)}\"` : "";
+      msg_meanings += `\n• ${item.partOfSpeech}\n ${definition[0].toUpperCase() + definition.slice(1) + example}`;
+    });
+    let msg_phonetics = "";
+    phonetics.forEach((item) => {
+      const text = item.text ? `\n    /${item.text}/` : "";
+      msg_phonetics += text;
+    });
+    const msg = `❰ ❝ ${data.word} ❞ ❱` + msg_phonetics + msg_meanings;
+    api.sendMessage(msg, event.threadID, event.messageID);
   } catch (error) {
-    api.sendMessage(`Error in the anime command: ${error.message}`);
+    if (error.response?.status === 404) {
+      api.sendMessage(`No definitions found for '${word}'.`, event.threadID, event.messageID);
+    } else {
+      api.sendMessage("An error occurred while fetching the definition. Please try again later.", event.threadID, event.messageID);
+    }
   }
 };
