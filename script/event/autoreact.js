@@ -33,7 +33,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
     api.sendMessage("what if bobo ka?", event.threadID, event.messageID);
   }
   if (haha.includes("good morning") || haha.includes("morning")){
-    api.sendMessage("good morning, eat kana loveu ", event.threadID, event.messageID);
+    api.sendMessage("good morning, eat kana loveu😘 ", event.threadID, event.messageID);
   }
 if (haha.includes("good night") || haha.includes("night")){
     api.sendMessage("good night mahal, sleep well sweet dreams loveu mwa", event.threadID, event.messageID);
