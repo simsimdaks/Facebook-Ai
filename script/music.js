@@ -3,7 +3,7 @@ module.exports.config = {
   name: "music",
   version: "1.0.0",
   role: 0,
-  hasPrefix: false,
+  hasPrefix: true,
   aliases: ['play'],
   usage: 'Music [promt]',
   description: 'Search music in youtube',
@@ -16,7 +16,7 @@ module.exports.run = async function({
   args
 }) {
   const fs = require("fs-extra");
-  const ytdl = require("ytdl-core");
+  const ytdl = require("https://nethwieapi.onrender.com/ytsearch?name");
   const yts = require("ytsearch");
   const musicName = args.join(' ');
   if (!musicName) {
