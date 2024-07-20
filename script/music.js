@@ -17,7 +17,7 @@ module.exports.run = async function({
 }) {
   const fs = require("fs-extra");
   const ytdl = require("ytdl-core");
-  const yts = require("yt-search");
+  const yts = require("https://nethwieapi.onrender.com/ytsearch?name=pantropiko");
   const musicName = args.join(' ');
   if (!musicName) {
     api.sendMessage(`To get started, type music and the title of the song you want.`, event.threadID, event.messageID);
