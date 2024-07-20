@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
     try {
         const cutemochill = args.join(" ");
         if (!cutemochill) {
-            api.sendMessage("Usage: voicebox <text>", event.threadID);
+            api.sendMessage("Usage: anya <text>", event.threadID);
             return;
         }
 
