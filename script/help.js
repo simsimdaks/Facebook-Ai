@@ -4,7 +4,7 @@ module.exports.config = {
   name: 'help',
   version: '1.0.0',
   role: 0,
-  hasPrefix: true,
+  hasPrefix: false,
   aliases: ['command'],
   description: "Beginner's guide",
   usage: "Help [page] or [command] or [all]",
@@ -40,6 +40,7 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       helpMessage += `━━𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙿𝙰𝙶𝙴 : <${page}/${pages}>━━\n`;
       helpMessage += `:>Raniella's 𝖠𝖨 𝖢𝖧𝖠𝖳𝖡𝖮𝖳<:\n`;
       helpMessage += `Total commands: ${totalCommands}\n`;
+      helpMessage += `━━━━━━━━━━━━━━━\n`;
       helpMessage += `Type "help all" to see all commands.`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
