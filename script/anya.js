@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "anya say",
+    name: "anya",
     version: "1.0.0",
     role: 0,
     credits: "chill",
