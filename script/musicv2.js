@@ -1,9 +1,11 @@
 
 const axios = require('axios');
 
-module.exports = {
+module.exports.config = {
   author: "raniel",
   name: 'musicv2',
+  version: '1.0.0',
+  hasPrefix: false,
   description: 'Searches for music on YouTube',
   async execute(message, args) {
     if (!args[0]) {

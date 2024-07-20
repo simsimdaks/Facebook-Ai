@@ -2,6 +2,7 @@
 const axios = require('axios');
 
 module.exports = {
+  hasPrefix: false, 
   name: 'music',
   description: 'Play music from YouTube!',
   async execute(message, args) {
