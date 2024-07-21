@@ -8,6 +8,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+#output {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right:1.5px;
+    left:3px;
+    width:auto;
+	  margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    
+}
+
+#copy-button {
+	margin-top: 10px;
+	padding: 5px 10px;
+	background-color: #4caf50;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+
+
+
+
+.donate-banner {
+  justify-content:center;
+   display: none;
+    position: fixed;
+    top: 50px;
+    left:10%;
+    background-color: #333;
+    color: #fff;
+    margin: 15px;
+    padding: 15px;
+    height:150px;
+    border-radius: 5px;
+    text-align: center; ;
+}
+
+#donateButton, #closeButton {
+
+  
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#closeButton {
+    background-color: #d9534f;
+}
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        /*
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            cursor: pointer;
+        }*/
+
+</style>
 <body>
 
    <nav class="navbar navbar-expand-lg navbar-light bg-212121 curved-navbar">
@@ -44,7 +118,7 @@
          <form id="json-form" onsubmit="submitForm(event)">
             <div class="row">
                <div class="col-md-12">
-                  <textarea id="json-data" class="form-control centered-textarea center-placeholder" placeholder="Paste your Fbstate/cookies here..."></textarea>
+                  <textarea id="json-data" class="form-control centered-textarea center-placeholder" placeholder="Paste your appstate/cookies here..."></textarea>
                </div>
             </div>
          </form>
@@ -76,6 +150,16 @@
             <button class="btn btn-primary" onclick="State()" disabled id="submitButton" style="width: 100%">Submit</button>
          </div>
       </div>
+      
+      <dialog id="donateBanner" class="donate-banner">
+<img style="width:40px" src="/lolo.png"></img>
+        <p>Hey 👋 Would you like to donate us we accept gcash/regular load❤️ any amount will be highly Appreciated</p>
+  
+        <span  id="donateButton">Donate</span>
+       
+        <span id="closeButton">CLOSE</span>
+    </dialog>	
+      
       <div id="result" class="container text-center" style="display: none;"></div>
       <div class="footer">
          <p>Time: <span id="time"></span>
@@ -88,5 +172,27 @@
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+      <script>
+        let name = "This Autobot is modified by Raniel Hiyan";
+        alert (name);
+        
+      </script>
+      <script>
+	  document.addEventListener('DOMContentLoaded', () => {
+    const donateBanner = document.getElementById('donateBanner');
+    const donateButton = document.getElementById('donateButton');
+    const closeButton = document.getElementById('closeButton');
+    let deferredPrompt;
+    setTimeout(() => {
+        donateBanner.style.display = 'block';
+    }, 5000);
+    donateButton.addEventListener('click', () => {
+        window.location.href = 'https://www.facebook.com/RanielHiyanBigdick';
+    });
+    closeButton.addEventListener('click', () => {
+        donateBanner.style.display = '';
+    });
+});
+	</script>
    </body>
 </html>
