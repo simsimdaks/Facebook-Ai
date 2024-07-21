@@ -22,24 +22,24 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   if (haha.includes("🥵") || haha.includes("umah") || haha.includes("💋") || haha.includes("kiss") || haha.includes("babu") || haha.includes("wow") || haha.includes("wah") || haha.includes("relationship") || haha.includes("gf") || haha.includes("baby") || haha.includes("omg")){
     return api.setMessageReaction("😘", event.messageID, (err) => {}, true)
         };
-  if (haha.includes("") || haha.includes("")){
+  if (haha.includes("pakiss") || haha.includes("kiss bi")){
     api.setMessageReaction("", event.messageID, (err) => {}, true)
-    api.sendMessage("", event.threadID,event.messageID);
+    api.sendMessage("kiss ka? kissi among iro oh gaona ka.", event.threadID,event.messageID);
   }
-  if (haha.includes("kiss bi") || haha.includes("")){
-    api.sendMessage("", event.threadID, event.messageID);
+  if (haha.includes("labyo") || haha.includes("iloveyou ")){
+    api.sendMessage("ngi kaluod nag aylabyo² ang di manag uyab yak🤢🤢🤢", event.threadID, event.messageID);
   }
   if (haha.includes("What if") || haha.includes("what if")){
     api.sendMessage("what if bobo ka?", event.threadID, event.messageID);
   }
   if (haha.includes("good morning") || haha.includes("morning")){
-    api.sendMessage("good morning, eat kana loveu😘 ", event.threadID, event.messageID);
+    api.sendMessage("good morning, eat kana loveu ", event.threadID, event.messageID);
   }
 if (haha.includes("good night") || haha.includes("night")){
     api.sendMessage("good night mahal, sleep well sweet dreams loveu mwa", event.threadID, event.messageID);
 }
-if (haha.includes("kiss sa") || haha.includes("")){
-    api.sendMessage("", event.threadID, event.messageID);
+if (haha.includes("piste") || haha.includes("yawa")){
+    api.sendMessage("aysig pamalikas kay maka baho nag nawng", event.threadID, event.messageID);
 };
   
       
