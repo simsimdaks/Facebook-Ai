@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "randomhugot",
+	name: "hugot",
 	version: "1.0.0",
 	hasPermission: 0,
 	hashPermission: 2,

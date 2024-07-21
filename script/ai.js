@@ -6,7 +6,7 @@ module.exports.config = {
     credits: "chill",
     description: "Interact with Mixtral AI",
     hasPrefix: false,
-    cooldown: 3,
+    cooldown: 0,
     aliases: ["mixtral"]
 };
 

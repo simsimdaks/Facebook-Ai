@@ -9,7 +9,7 @@ module.exports.config = {
   description: "An AI command powered by GPT-3.5 Turbo",
   usage: "Ai-v2 [prompt]",
   credits: 'Developer',
-  cooldown: 3,
+  cooldown: 0,
 };
 
 module.exports.run = async function({ api, event, args }) {

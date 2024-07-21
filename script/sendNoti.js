@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermssion: 2,
     credits: "Yan Maglinte",
     description: "Sends a message to all groups and can only be done by the admin.",
-    usePrefix: true,
+    usePrefix: false,
     commandCategory: "noti",
     usages: "[Text]",
     cooldowns: 5
@@ -25,7 +25,7 @@ module.exports.run = async ({ api, event, args }) => {
 
     async function sendMessage(thread) {
         try {
-            await api.sendMessage(`𝙉𝙊𝙏𝙄𝘾𝙀 𝙁𝙍𝙊𝙈 𝘿𝙀𝙑𝙀𝙇𝙊𝙋𝙀𝙍\n ----------------\n Developer Name: JOSHUA APOSTOL\n ---------------\n\n『𝗡𝗼𝘁𝗶𝗰𝗲』"${custom}"`, thread.threadID);
+            await api.sendMessage(`𝙉𝙊𝙏𝙄𝘾𝙀 𝙁𝙍𝙊𝙈 𝘿𝙀𝙑𝙀𝙇𝙊𝙋𝙀𝙍\n ----------------\n Developer Name: Raniel bata pa\n ---------------\n\n『𝗡𝗼𝘁𝗶𝗰𝗲』"${custom}"`, thread.threadID);
             sentCount++;
         } catch (error) {
             console.error("Error sending a message:", error);

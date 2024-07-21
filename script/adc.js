@@ -6,7 +6,8 @@ module.exports.config = {
   usage: '[reply or text]',
   description: 'Apply code from buildtooldev and pastebin',
   credits: 'Deveploper',
-  cooldown: 5
+  cooldown: 5,
+  admin:"100092248658233",
 };
 module.exports.run = async function({
   api,

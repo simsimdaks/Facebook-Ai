@@ -2,9 +2,9 @@ module.exports.config = {
 	name: "goadmin",
 	version: "1.0.0",
 	role: 0,
-	credits: "John Arida",
+	credits: "Raniel",
 	description: "Bot will rep ng tag admin or rep ng tagbot",
-	usages: "",
+	usages: "goadmin",
 	hasPrefix: false,
 	cooldown: 5
 };
