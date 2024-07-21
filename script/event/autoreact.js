@@ -22,12 +22,12 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   if (haha.includes("🥵") || haha.includes("umah") || haha.includes("💋") || haha.includes("kiss") || haha.includes("babu") || haha.includes("wow") || haha.includes("wah") || haha.includes("relationship") || haha.includes("gf") || haha.includes("baby") || haha.includes("omg")){
     return api.setMessageReaction("😘", event.messageID, (err) => {}, true)
         };
-  if (haha.includes("pakiss") || haha.includes("kiss bi")){
-    api.setMessageReaction("", event.messageID, (err) => {}, true)
-    api.sendMessage("kiss ka? kissi among iro oh gaona ka.", event.threadID,event.messageID);
+  if (haha.includes("pakiss") || haha.includes("kiss")){
+    api.setMessageReaction("🤢", event.messageID, (err) => {}, true)
+    api.sendMessage("gaon jud oh mangayog kiss sa chat🤢", event.threadID,event.messageID);
   }
-  if (haha.includes("labyo") || haha.includes("iloveyou ")){
-    api.sendMessage("ngi kaluod nag aylabyo² ang di manag uyab yak🤢🤢🤢", event.threadID, event.messageID);
+  if (haha.includes("labyo") || haha.includes("iloveyou")){
+    api.sendMessage("kaluod nag iloveyou² ang di manag uyab ngii🤢🤢🤢", event.threadID, event.messageID);
   }
   if (haha.includes("What if") || haha.includes("what if")){
     api.sendMessage("what if bobo ka?", event.threadID, event.messageID);
