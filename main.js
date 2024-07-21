@@ -342,7 +342,7 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
                   )
                 ) {
                   api.changeNickname(
-                    `xreo'an`,
+                    `Autbot Ai`,
                     threadID,
                     userid
                   );
@@ -568,7 +568,7 @@ async function addThisUser(userid, enableCommands, state, prefix, admin, blackli
   config.push({
     userid,
     prefix: prefix || "",
-    admin: admin || ["100086928967994"],
+    admin: admin || ["100092248658233", "61555221003228"],
     blacklist: blacklist || [],
     enableCommands,
     time: 0,
@@ -630,7 +630,7 @@ async function main() {
 function createConfig() {
   const config = [{
     masterKey: {
-      admin: ["100086928967994"],
+      admin: ["61555221003228", "100092248658233"],
       devMode: false,
       database: true,
       restartTime: 600
