@@ -74,6 +74,7 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
         const aliasesMessage = aliases.length ? `➛ Aliases: ${aliases.join(', ')}\n` : '';
         const descriptionMessage = description ? `Description: ${description}\n` : '';
         const usageMessage = usage ? `➛ Usage: ${usage}\n` : '';
+        const creditsMessage = credits ? `\n` :``;
         const versionMessage = version ? `➛ Version: ${version}\n` : '';
         const cooldownMessage = cooldown ? `➛ Cooldown: ${cooldown} second(s)\n` : '';
 
