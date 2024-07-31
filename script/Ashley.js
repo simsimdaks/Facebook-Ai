@@ -6,7 +6,7 @@ module.exports.config = {
     role: 0,
     credits: "chilli", 
     description: "Fetch a response from Ashley",
-    hasPrefix: true,
+    hasPrefix: false,
     aliases: ["ashkey", "ash"],
     usage: "[ashley <query>]",
     cooldown: 5,
