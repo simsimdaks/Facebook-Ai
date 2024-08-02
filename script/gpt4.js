@@ -23,7 +23,7 @@ module.exports.run = async function({ api, event, args }) {
   api.sendMessage('Please wait...', event.threadID, event.messageID);
 
   try {
-    const { data } = await axios.get(`https://nash-api-end.onrender.com/freegpt4o8k?question=${encodeURIComponent(input)}`);
+    const { data } = await axios.get(`https://markdevs-69.vercel.app/freegpt4o8k?question=${encodeURIComponent(input)}`);
     let response = JSON.parse(data.answer).response;
     
     response = response.replace(/\n\nIs this answer helpful to you\?/, '');
