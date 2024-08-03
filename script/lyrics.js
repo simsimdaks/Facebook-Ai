@@ -20,7 +20,7 @@ module.exports.run = async function ({ api, event, args }) {
         api.sendMessage("Fetching lyrics, please wait...", event.threadID, async (err, info) => {
             if (err) {
                 console.error(err);
-                return api.sendMessage("An error occurred while processing your request.", event.threadID);
+                return api.sendMessage("Lyrics not found.", event.threadID);
             }
 
             try {
@@ -28,7 +28,7 @@ module.exports.run = async function ({ api, event, args }) {
                 const { lyrics, title, artist, image } = response.data.result;
 
                 if (!lyrics || !title || !artist || !image) {
-                    return api.sendMessage("Lyrics not found for the given query.", event.threadID);
+                    return api.sendMessage("Lyrics not found", event.threadID);
                 }
 
                 const message = {
@@ -39,11 +39,11 @@ module.exports.run = async function ({ api, event, args }) {
                 api.sendMessage(message, event.threadID);
             } catch (error) {
                 console.error(error);
-                api.sendMessage("An error occurred while fetching the lyrics.", event.threadID);
+                api.sendMessage("Lyrics not found", event.threadID);
             }
         });
     } catch (error) {
         console.error("Error in lyrics command:", error);
-        api.sendMessage("An error occurred while processing your request.", event.threadID);
+        api.sendMessage("Lyrics not found", event.threadID);
     }
 };
