@@ -4,7 +4,7 @@ module.exports.config = {
   name: 'gpt4',
   version: '1.0.0',
   role: 0,
-  hasPrefix: true,
+  hasPrefix: false,
   aliases: ['gpt', 'openai'],
   description: "An AI command powered by GPT-4",
   usage: "Ai [question]",
