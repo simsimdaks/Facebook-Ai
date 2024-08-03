@@ -23,7 +23,7 @@ module.exports.run = async function({ api, event, args }) {
   api.sendMessage('Please wait...', event.threadID, event.messageID);
 
   try {
-    const { data } = await axios.get(`https://markdevs-last-api-as2j.onrender.com/api/v2/gpt4?query=${encodeURIComponent(input)}`);
+    const { data } = await axios.get(`https://markdevs-last-api-as2j.onrender.com/gpt4?prompt=&uid=${encodeURIComponent(input)}`);
     let response = JSON.parse(data.answer).response;
     
     response = response.replace(/\n\nIs this answer helpful to you\?/, '');
