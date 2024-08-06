@@ -1,39 +1,36 @@
-const axios = require('axios');
-
 module.exports.config = {
-    name: "gemini",
-    role: 0,
-    credits: "chill",
-    description: "Interact with Gemini",
-    hasPrefix: false,
-    version: "1.0.0",
-    aliases: ["gemini"],
-    usage: "gemini [reply to photo]"
+  name: "gemini",
+  role: 0,
+  credits: "Deku",
+  description: "Talk to Gemini (conversational)",
+  hasPrefix: false,
+  version: "5.6.7",
+  aliases: ["bard"],
+  usage: "gemini [prompt]"
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const prompt = args.join(" ");
-
-    if (!prompt) {
-        return api.sendMessage('This cmd only works in photo.', event.threadID, event.messageID);
+  const axios = require("axios");
+  let prompt = encodeURIComponent(args.join(" ")),
+    uid = event.senderID,
+    url;
+  if (!prompt) return api.sendMessage(`Please enter a prompt.`, event.threadID);
+  api.sendTypingIndicator(event.threadID);
+  try {
+    const geminiApi = `https://ggwp-yyxy.onrender.com`;
+    if (event.type == "message_reply") {
+      if (event.messageReply.attachments[0]?.type == "photo") {
+        url = encodeURIComponent(event.messageReply.attachments[0].url);
+        const res = (await axios.get(`${geminiApi}/gemini?prompt=${prompt}&url=${url}`)).data;
+        return api.sendMessage(res.gemini, event.threadID);
+      } else {
+        return api.sendMessage('Please reply to an image.', event.threadID);
+      }
     }
-
-    if (event.type !== "message_reply" || !event.messageReply.attachments[0] || event.messageReply.attachments[0].type !== "photo") {
-        return api.sendMessage('Please reply to a photo with this command.', event.threadID, event.messageID);
-    }
-
-    const url = encodeURIComponent(event.messageReply.attachments[0].url);
-    api.sendTypingIndicator(event.threadID);
-
-    try {
-        await api.sendMessage('👽 𝑮𝑬𝑴𝑰𝑵𝑰\n━━━━━━━━━━━━━━━━━━\nGemini recognizing picture, please wait...\n━━━━━━━━━━━━━━━━━━', event.threadID);
-
-        const response = await axios.get(`https://joshweb.click/gemini?prompt=${encodeURIComponent(prompt)}&url=${url}`);
-        const description = response.data.gemini;
-
-        return api.sendMessage(`👽 𝑮𝑬𝑴𝑰𝑵𝑰\n━━━━━━━━━━━━━━━━━━\n${description}\n━━━━━━━━━━━━━━━━━━`, event.threadID, event.messageID);
-    } catch (error) {
-        console.error(error);
-        return api.sendMessage('❌ | An error occurred while processing your request.', event.threadID, event.messageID);
-    }
+    const response = (await axios.get(`${geminiApi}/gemini?prompt=${prompt}`)).data;
+    return api.sendMessage(response.gemini, event.threadID);
+  } catch (error) {
+    console.error(error);
+    return api.sendMessage('Error skills issue', event.threadID);
+  }
 };
