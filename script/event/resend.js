@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "resend",
     version: "1.0.0",
-    
+
 };
 var msgData = {} 
 
@@ -54,4 +54,4 @@ api.sendMessage({body:`${name} unsent this gif: ${msgData[event.messageID].body}
              });     
     }
   }
-}
+              }
