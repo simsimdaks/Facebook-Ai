@@ -43,7 +43,7 @@ module.exports.handleEvent = async function ({ api, event }) {
             console.log('Downloaded video file.');
 
             api.sendMessage({
-              body: `𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 𝖳𝗂𝗄𝖳𝗈𝗄 \n\n𝙲𝚘𝚗𝚝𝚎𝚗𝚝: ${data.title}\n\n𝙻𝚒𝚔𝚎𝚜: ${data.digg_count}\n\n𝙲𝚘𝚖𝚖𝚎𝚗𝚝𝚜: ${data.comment_count}\n\n𝗬𝗔𝗭𝗞𝗬 𝗕𝗢𝗧 𝟭.𝟬.𝟬𝘃`,
+              body: `𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 𝖳𝗂𝗄𝖳𝗈𝗄 \n\n𝙲𝚘𝚗𝚝𝚎𝚗𝚝: ${data.title}\n\n𝙻𝚒𝚔𝚎𝚜: ${data.digg_count}\n\n𝙲𝚘𝚖𝚖𝚎𝚗𝚝𝚜: ${data.comment_count}\n`,
               attachment: fs.createReadStream(filePath)
             }, event.threadID, () => {
               fs.unlinkSync(filePath);
@@ -106,7 +106,7 @@ module.exports.handleEvent = async function ({ api, event }) {
           });
 
           console.log(`Sending message with file "${fileName}"...`);
-          await api.sendMessage({ body: `𝖦𝗈𝗈𝗀𝗅𝖾 𝖣𝗋𝗂𝗏𝖾 𝖫𝗂𝗇𝗄 \n\n𝙵𝙸𝙻𝙴𝙽𝙰𝙼𝙴: ${fileName}\n\n𝗬𝗔𝗭𝗞𝗬 𝗕𝗢𝗧 𝟭.𝟬.𝟬𝘃`, attachment: fs.createReadStream(destPath) }, event.threadID, () => fs.unlinkSync(destPath),
+          await api.sendMessage({ body: `𝖦𝗈𝗈𝗀𝗅𝖾 𝖣𝗋𝗂𝗏𝖾 𝖫𝗂𝗇𝗄 \n\n𝙵𝙸𝙻𝙴𝙽𝙰𝙼𝙴: ${fileName}\n`, attachment: fs.createReadStream(destPath) }, event.threadID, () => fs.unlinkSync(destPath),
         event.messageID);
 
           console.log(`Deleting file "${fileName}"...`);
@@ -135,7 +135,7 @@ module.exports.handleEvent = async function ({ api, event }) {
 
         file.on('finish', () => {
           file.close(() => {
-            api.sendMessage({body: "𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 Youtube\n\n𝗬𝗔𝗭𝗞𝗬 𝗕𝗢𝗧 𝟭.𝟬.𝟬𝘃", attachment: fs.createReadStream(filePath) }, event.threadID, () => fs.unlinkSync(filePath));
+            api.sendMessage({body: "𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 Youtube\n", attachment: fs.createReadStream(filePath) }, event.threadID, () => fs.unlinkSync(filePath));
           });
         });
       } catch (error) {
@@ -158,7 +158,7 @@ module.exports.handleEvent = async function ({ api, event }) {
             const result = await getFBInfo(url);
             let videoData = await axios.get(encodeURI(result.sd), { responseType: 'arraybuffer' });
             fs.writeFileSync(fbvid, Buffer.from(videoData.data, "utf-8"));
-            return api.sendMessage({body: "𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 𝖥𝖺𝖼𝖾𝖻𝗈𝗈𝗄 𝖵𝗂𝖽𝖾𝗈\n\n𝗬𝗔𝗭𝗞𝗬 𝗕𝗢𝗧 𝟭.𝟬.𝟬𝘃", attachment: fs.createReadStream(fbvid) }, event.threadID, () => fs.unlinkSync(fbvid));
+            return api.sendMessage({body: "𝖠𝗎𝗍𝗈 𝖣𝗈𝗐𝗇 𝖥𝖺𝖼𝖾𝖻𝗈𝗈𝗄 𝖵𝗂𝖽𝖾𝗈\n", attachment: fs.createReadStream(fbvid) }, event.threadID, () => fs.unlinkSync(fbvid));
           }
           catch (e) {
             return console.log(e);
