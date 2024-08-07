@@ -1,52 +1,64 @@
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
 module.exports.config = {
     name: "dalle",
-    version: "1.0.0",
-    credits: "chill",
-    description: "Generate images",
-    hasPrefix: false,
+    description: "Fetch and download images from Bing",
     cooldown: 5,
-    aliases: ["dalle"]
+    aliases: ["bing"],
+    role: 0, 
+    hasPrefix: false,
+    cooldowns: 5,
+    credits: "cliff", //api by kshtiz 
+    usage: "{p}{n} <query>",
 };
 
 module.exports.run = async function ({ api, event, args }) {
     try {
-        let chilli = args.join(" ");
-        if (!chilli) {
-            return api.sendMessage("[ ❗ ] - Missing prompt for the DALL-E command", event.threadID, event.messageID);
+        const { messageID } = event;
+        const query = args.join(' ');
+
+        if (!query) {
+            return api.sendMessage('Please provide a search query.', event.threadID, messageID);
         }
 
-        api.sendMessage("Generating image, please wait...", event.threadID, async (err, info) => {
-            if (err) {
-                console.error(err);
-                return api.sendMessage("An error occurred while processing your request.", event.threadID);
-            }
+        const cliff = await new Promise(resolve => { api.sendMessage(`🔍 | Generating ${query} image...`, event.threadID, (err, info1) => {
+      resolve(info1);
+     }, event.messageID);
+    });
+        const apiUrl = `https://dall-e-tau-steel.vercel.app/kshitiz?prompt=${encodeURIComponent(query)}`;
+        const response = await axios.get(apiUrl);
 
-            try {
-                const pogi = await axios.get(`https://markdevs-last-api-2epw.onrender.com/dallev2?prompt=${encodeURIComponent(chilli)}`, { responseType: 'arraybuffer' });
-                const imagePath = path.join(__dirname, "dalle_image.png");
-                
-                fs.writeFileSync(imagePath, pogi.data);
+        if (response.data && response.data.response) {
+            const imageUrl = response.data.response;
+            const fileName = `image.jpg`;
+            const filePath = path.join(__dirname, fileName);
 
-                const poganda = await api.getUserInfo(event.senderID);
-                const requesterName = poganda[event.senderID].name;
+            const imageResponse = await axios.get(imageUrl, {
+                responseType: 'arraybuffer'
+            });
 
-                api.sendMessage({
-                    body: `Here is the image you requested:\n\nPrompt: ${chilli}\n\nRequested by: ${requesterName}`,
-                    attachment: fs.createReadStream(imagePath)
-                }, event.threadID, () => {
-                    fs.unlinkSync(imagePath);
-                });
-            } catch (mantika) {
-                console.error(mantika);
-                api.sendMessage("An error occurred while processing your request.", event.threadID);
-            }
-        });
-    } catch (mantika) {
-        console.error("Error in DALL-E command:", mantika);
-        api.sendMessage("An error occurred while processing your request.", event.threadID);
+            fs.writeFileSync(filePath, Buffer.from(imageResponse.data, 'binary'));
+
+            const message = {
+                body: `Image for: ${query}`,
+                attachment: fs.createReadStream(filePath),   
+            };
+
+            api.sendMessage(message, event.threadID, (error, info) => {
+                if (error) {
+                    console.error('Error sending message:', error);
+                } else {
+                    fs.unlinkSync(filePath);
+                }
+            });
+        } else {
+            api.sendMessage('No image found.', event.threadID);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        api.sendMessage(`An error occurred: ${error.message}`, event.threadID);
     }
 };
