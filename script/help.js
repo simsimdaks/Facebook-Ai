@@ -40,9 +40,9 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       helpMessage += `━𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙿𝙰𝙶𝙴 : <${page}/${pages}>━\n`;
       helpMessage += `Total commands: ${totalCommands}\n`;
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `Type "` + prefix `help all" to see all commands.\n`;
-      helpMessage +=`━━━━━━━━━━━━━━━\n\n`;
-      helpMessage += `This AI is made by ICT students in Pegafi`;
+      helpMessage += `Type "help all" to see all commands.\n`;
+      helpMessage +=`━━━━━━━━━━━━━━━\n\n
+      This AI is made by ICT students in Pegafi`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
     } else if (input.toLowerCase() === 'all') {
