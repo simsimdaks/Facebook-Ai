@@ -37,11 +37,12 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       }
 
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `━━𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙿𝙰𝙶𝙴 : <${page}/${pages}>━━\n`;
-      helpMessage += `:>Raniella's 𝖠𝖨 𝖢𝖧𝖠𝖳𝖡𝖮𝖳<:\n`;
+      helpMessage += `━𝙲𝙾𝙼𝙼𝙰𝙽𝙳 𝙿𝙰𝙶𝙴 : <${page}/${pages}>━\n`;
       helpMessage += `Total commands: ${totalCommands}\n`;
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `Type "help all" to see all commands.`;
+      helpMessage += `Type "` + prefix `help all" to see all commands.\n`;
+      helpMessage +=`━━━━━━━━━━━━━━━\n\n`;
+      helpMessage += `This AI is made by ICT students in Pegafi`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
     } else if (input.toLowerCase() === 'all') {
@@ -51,7 +52,6 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       }
 
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `:>Raniella's 𝖠𝖨 𝖢𝖧���HatBot<:\n`;
       helpMessage += `Total commands: ${totalCommands}`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
