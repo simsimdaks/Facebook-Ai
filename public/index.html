@@ -88,7 +88,7 @@ legend {
       </div>
    </nav>
       <div class="container">
-         <h1 class="col text-center" style="font-size: 20px; padding: 10px;">Welcome to Raniella's 𝑵𝑻. AUTOBOT.</h1>
+         <h1 class="col text-center" style="font-size: 20px; padding: 10px;">Welcome to the ICT AI Project! This site is prepared by the Group 4 ICT RIGHTEOUSNESS students in Pegafi.</h1>
          <h1></h1>
          <h1 class="col text-center" style="font-size:10px; padding:10px;">Highly recommend use dummy account for safety.</h1>
          <form id="json-form" onsubmit="submitForm(event)">
@@ -99,11 +99,11 @@ legend {
                </div>
             </div>
          </form>
-         <p style=" margin-top: 10px">Begin by entering your appstate.</p>
+       <p class="col text-center" style=" margin-top: 10px">Begin by entering your appstate. <a style="font-size: 10px" href="/step_by_step_guide">(How To Get Appstate)</a></p>
       </div>
       <div class="container">
          <h1 class="col text-center" style="font-size: 20px; padding: 10px;">Terms and Conditions and Privacy Policy</h1>
-         <p>Upon deployment or logging in, your chatbot connection remains active unless you personally access the bot's account or modify the password. This measure is in place to ensure the seamless operation and security of the chatbot.</p>
+         <p>Upon deployment or logging in, your chatbot connection remains active unless you personally access the bot's account or modify/change the password. This measure is in place to ensure the seamless operation and security of the chatbot.</p>
 
          <div class="container" id="listOfCommands">
             <h1 style="font-size: 16px; padding: 10px;">Please select a command.</h1>
@@ -113,13 +113,58 @@ legend {
             <h1 style="font-size: 16px; padding: 10px;">Please select a event.</h1>
             <button class="btn btn-primary" onclick="selectAllEvents()">Select all events</button>
          </div>
-         <div class="container" id="prefixOfCommands">
-            <h1 style="font-size: 16px; padding: 10px;">Please provide a prefix (optional).</h1>
-            <input type="text" id="inputOfPrefix">
-         </div>
+         
+         
+         <style>
+           .container2 {
+  position: relative;
+  height:0px;
+  width:0px;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: -1px;
+  background-color: #212121;
+
+  box-shadow: 0px 0px 10px 1px blue;
+
+}
+.1{
+  align-items: center;
+}
+         </style>
+         
+         
+        <div class="container" id="prefixOfCommands">
+        <h1 style="font-size: 16px; padding: 10px;">Please provide a prefix (optional).</h1>
+        <select class="container2" style="background-color:gray; font-size: 10px; padding:20px;" id="selectPrefix">
+            
+            <option value="">no prefix</option>
+            <option value=".">.</option>
+            <option value=",">,</option>
+            <option value="!">!</option>
+            <option value="/">/</option>
+            <option value="\">\</option>
+            <option value="#">#</option>
+            <option value="$">$</option>
+        </select>
+        <input class="output" type="text" id="inputOfPrefix">
+    </div>
+
+    <script>
+        document.getElementById('selectPrefix').addEventListener('change', function() {
+            document.getElementById('inputOfPrefix').value = this.value;
+        });
+    </script>
+
+         
+         
+         
+         
+         
          <div class="container" id="adminOfCommands">
-            <h1 style="font-size: 16px; padding: 10px;">Please provide an uid (optional).</h1>
-            <input type="text" id="inputOfAdmin">
+            <h1 style="font-size: 16px; padding: 10px;">Please provide an uid for bot admin (optional).</h1>
+            <input class="1" type="text" id="inputOfAdmin">
          </div>
          <label style="font-size: 14px; display: flex; align-items: center; padding: 22px;">
          <input type="checkbox" id="agreeCheckbox" style="margin-right: 10px;"> Checking this box certifies that I have read, understood, and agreed to the Terms and Conditions. </label>
@@ -128,14 +173,6 @@ legend {
          </div>
       </div>
       
-      <dialog id="donateBanner" class="donate-banner">
-
-        <p>Hey 👋 Would you like to donate us,  we accept gcash/regular load❤️ any amount will be highly Appreciated</p>
-  
-        <span  id="donateButton">Donate</span>
-       
-        <span id="closeButton">CLOSE</span>
-    </dialog>	
       
       <div id="result" class="container text-center" style="display: none;"></div>
       <div class="footer">
@@ -150,27 +187,10 @@ legend {
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
       <script>
-        let name = "This Autobot is modified by Raniel Hiyan";
+        let name = "This Autobot site is developed by ICT studentsin Pegafi.";
         alert (name);
         
       </script>
-      <script>
-	  document.addEventListener('DOMContentLoaded', () => {
-    const donateBanner = document.getElementById('donateBanner');
-    const donateButton = document.getElementById('donateButton');
-    const closeButton = document.getElementById('closeButton');
-    let deferredPrompt;
-    setTimeout(() => {
-        donateBanner.style.display = 'block';
-    }, 5000);
-    donateButton.addEventListener('click', () => {
-        window.location.href = 'https://www.facebook.com/RanielHiyanBigdick';
-    });
-    closeButton.addEventListener('click', () => {
-        donateBanner.style.display = '';
-    });
-});
-	</script>
-   </body>
-			  </html>
+</body>
+ </html>
 	   
