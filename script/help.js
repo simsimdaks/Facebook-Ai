@@ -52,7 +52,9 @@ module.exports.run = async function ({ api, event, enableCommands, args, Utils, 
       }
 
       helpMessage += `━━━━━━━━━━━━━━━\n`;
-      helpMessage += `Total commands: ${totalCommands}`;
+      helpMessage += `Total commands: ${totalCommands}\n`;
+      helpMessage +=`━━━━━━━━━━━━━━━\n
+      This AI is made by ICT students in Pegafi`;
 
       api.sendMessage(helpMessage, event.threadID, event.messageID);
     } else {
